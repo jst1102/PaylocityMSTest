@@ -18,8 +18,6 @@ namespace PaylocityTest.Steps
 		#region Constructor
 		public LoginSteps(IWebDriver webDriver)
 		{
-			//string Directory = "C:\\Users\\Computer\\source\\repos\\PaylocityMSTest\\PaylocityMSTest\\bin\\Debug\\netcoreapp2.2";
-			//driver = new FirefoxDriver();
 			driver = webDriver;
 			LoginPage = new LoginPage(driver);
 		}
@@ -38,10 +36,7 @@ namespace PaylocityTest.Steps
 		[Given(@"I navigate to the login page")]
 		public void GivenINavigateToTheLoginPage()
 		{
-
 			driver.Navigate().GoToUrl("file:///C:/Paylocity/login.html");
-			//driver.Manage().Window.Maximize();
-
 		}
 
 		[Given(@"I click the Login button on the login page")]
@@ -90,7 +85,6 @@ namespace PaylocityTest.Steps
 		{
 			Console.WriteLine("test");
 		}
-
 		#endregion Steps
 	}//end class
 }//end namespace

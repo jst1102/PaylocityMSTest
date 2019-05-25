@@ -14,17 +14,6 @@ namespace PaylocityMSTest.Pages
 		#region Variables
 		private readonly IWebDriver driver;
 
-		class Benefits
-		{
-			public string ID { get; set; }
-			public string FirstName { get; set; }
-			public string LastName { get; set; }
-			public string Salary { get; set; }
-			public string Dependents { get; set; }
-			public string GrossPay { get; set; }
-			public string BenefitCost { get; set; }
-			public string NetPay { get; set; }
-		}
 		#endregion Variables
 
 		#region Constructor
@@ -130,10 +119,7 @@ namespace PaylocityMSTest.Pages
 
 		public string ReturnEmployeeInfo(string firstName, string lastName)
 		{
-			Benefits employeeBenefits = new Benefits();
 			string info = string.Empty;
-			//List<String> bene = new List<string>();
-			
 
 			foreach (var e in EmployeeBenefitsLocator)
 			{
@@ -142,9 +128,6 @@ namespace PaylocityMSTest.Pages
 					Console.WriteLine(e.Text + " is the benefit info in a string");
 					info = e.Text;
 					break;
-					//bene = info.Split(new Char[] { ' ' });
-					//bene.ToList().ForEach(i => Console.WriteLine(i.ToString()));
-					//bene = info.Split(' ').ToList();
 				}
 			}
 			return info;
@@ -165,9 +148,6 @@ namespace PaylocityMSTest.Pages
 			ClickEmployeeEditButton(name);
 
 		}
-
-
 		#endregion Methods
-
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using PaylocityMSTest.Pages;
-using PaylocityMSTest.Utilities;
 using TechTalk.SpecFlow;
 
 namespace PaylocityMSTest.Steps
@@ -10,9 +9,7 @@ namespace PaylocityMSTest.Steps
 	{
 
 		#region Variables
-
 		private readonly IWebDriver driver;
-		//private SeleniumContext seleniumContext;
 
 		#endregion Variables
 
@@ -50,8 +47,6 @@ namespace PaylocityMSTest.Steps
 		{
 			SearchPage.ClickSearchButton();
 		}
-
-
 		#endregion Steps
 	}//end class
 }//end namespace
