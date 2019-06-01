@@ -167,12 +167,12 @@ this.CheckLogin("Login Bad Password", "testUser", "password", "do", "Invalid log
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "Skip")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "Skip")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:do/do not", "do")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Invalid login attempt. Please try again.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Username and password cannot be blank.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:page", "Login")]
         public virtual void CheckLogin_LoginNothing()
         {
 #line 7
-this.CheckLogin("Login Nothing", "Skip", "Skip", "do", "Invalid login attempt. Please try again.", "Login", ((string[])(null)));
+this.CheckLogin("Login Nothing", "Skip", "Skip", "do", "Username and password cannot be blank.", "Login", ((string[])(null)));
 #line hidden
         }
         
@@ -184,29 +184,29 @@ this.CheckLogin("Login Nothing", "Skip", "Skip", "do", "Invalid login attempt. P
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "Skip")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "Test1234")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:do/do not", "do")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "No user given. Please try again.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Username cannot be blank.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:page", "Login")]
         public virtual void CheckLogin_LoginNoUser()
         {
 #line 7
-this.CheckLogin("Login No User", "Skip", "Test1234", "do", "No user given. Please try again.", "Login", ((string[])(null)));
+this.CheckLogin("Login No User", "Skip", "Test1234", "do", "Username cannot be blank.", "Login", ((string[])(null)));
 #line hidden
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Check Login: Login No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Check Login: Login Valid User No Password")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Login")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Login No Password")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Login No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Login Valid User No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Login Valid User No Password")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "testUser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "Skip")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:do/do not", "do")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "No password given. Please try again.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Password cannot be blank.")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:page", "Login")]
-        public virtual void CheckLogin_LoginNoPassword()
+        public virtual void CheckLogin_LoginValidUserNoPassword()
         {
 #line 7
-this.CheckLogin("Login No Password", "testUser", "Skip", "do", "No password given. Please try again.", "Login", ((string[])(null)));
+this.CheckLogin("Login Valid User No Password", "testUser", "Skip", "do", "Password cannot be blank.", "Login", ((string[])(null)));
 #line hidden
         }
         
@@ -258,6 +258,23 @@ this.CheckLogin("Login Lowercase Username", "testuser", "Test1234", "do", "Inval
         {
 #line 7
 this.CheckLogin("Login Lowercase Password", "testUser", "test1234", "do", "Invalid login attempt. Please try again.", "Login", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Check Login: Login Bad User No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Login")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Login Bad User No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Description", "Login Bad User No Password")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:username", "test")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:password", "Skip")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:do/do not", "do")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "Password cannot be blank.")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:page", "Login")]
+        public virtual void CheckLogin_LoginBadUserNoPassword()
+        {
+#line 7
+this.CheckLogin("Login Bad User No Password", "test", "Skip", "do", "Password cannot be blank.", "Login", ((string[])(null)));
 #line hidden
         }
     }

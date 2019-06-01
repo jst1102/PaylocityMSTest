@@ -19,7 +19,6 @@ namespace PaylocityMSTest.Steps
 
 		#region Constructor
 
-		//private IWebDriver driver;
 		public Steps(IWebDriver webDriver)
 		{
 			driver = webDriver;

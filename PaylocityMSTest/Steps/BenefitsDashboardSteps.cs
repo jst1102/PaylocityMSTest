@@ -12,7 +12,7 @@ namespace PaylocityMSTest.Steps
 	{
 		#region Variables
 		private readonly IWebDriver driver;
-		private BenefitsDashboardPage Benefits;
+		private readonly BenefitsDashboardPage Benefits;
 		#endregion Variables
 
 		#region Constructor
@@ -57,16 +57,15 @@ namespace PaylocityMSTest.Steps
 				case Constants.SUBMIT:
 				case Constants.UPDATE:
 					buttonClick = Constants.SUBMIT;
-					When(string.Format(@"I click the {0} button on the Add Employee & His dependents pop up", buttonClick));
 					break;
 				case Constants.CLOSE:
-					//TODO: Implement this functionality
+					buttonClick = Constants.CLOSE;
 					break;
 				default:
 					throw new Exception($"From the Feature file, 'Update' received a bad value of : {buttonClick}. " +
 						$"Valid parameters are 'UPDATE', 'SUBMIT' or 'CLOSE'. Please check the Feature file and correct.");
 			}
-			
+			When(string.Format(@"I click the {0} button on the Add Employee & His dependents pop up", buttonClick));
 		}
 
 		[When(@"I click the (.*) button on the Add Employee & His dependents pop up")]
@@ -90,7 +89,7 @@ namespace PaylocityMSTest.Steps
 		public void ThenIShouldSeeTheEmployeeInTheTable(string firstName, string lastName)
 		{
 			
-			Assert.IsTrue(Benefits.ReturnEmployeeName(firstName, lastName));
+			Assert.IsTrue(Benefits.ReturnEmployeeName(firstName, lastName), $"The employee {firstName} {lastName} was not found.");
 		}
 				
 		[Then(@"the benefit cost calculations are correct for (.*) (.*)")]

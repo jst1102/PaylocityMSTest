@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using TechTalk.SpecFlow;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
 
 namespace PaylocityMSTest.Pages
 {
@@ -37,10 +36,6 @@ namespace PaylocityMSTest.Pages
 
 		private IWebElement AddEmployeeCloseButtonLocator => driver.FindElement(By.XPath("//button[@type='button' and contains(., 'Close')]"));
 
-		private IWebElement DeleteEmployeeButtonLocator => driver.FindElement(By.Id("btnDelete"));
-
-		private IWebElement EditEmployeeButtonLocator => driver.FindElement(By.Id("btnEdit"));
-
 		private IWebElement GeneralEditEmployeeButtonLocator(string name) => driver.FindElement(By.XPath("//table[@id='employee-table']//td[contains(text(),'" + name + "')]/following-sibling::td//span[contains(@id,'btnEdit')]"));
 
 		private IList<IWebElement> EmployeeBenefitsLocator => driver.FindElements(By.TagName("tr"));
@@ -49,26 +44,49 @@ namespace PaylocityMSTest.Pages
 
 		#region Methods
 
+		/// <summary>
+		/// Method clicks the Add Employee button
+		/// </summary>
 		public void ClickAddEmployeeButton()
 		{
 			AddEmployeeButtonLocator.Click();
 		}
 
+		/// <summary>
+		/// Method takes the parameter and inputs it into the first name field of the Add Employee pop-up
+		/// </summary>
+		/// <param name="firstName"></param>
 		private void TypeEmployeeFirstName(string firstName)
 		{
 			AddEmployeeFirstNameFieldLocator.TypeText(firstName);
 		}
 
+		/// <summary>
+		/// Method takes the parameter and inputs it into the last name field of the Add Employee pop-up
+		/// </summary>
+		/// <param name="lastName"></param>
 		private void TypeEmployeeLastName(string lastName)
 		{
 			AddEmployeeLastNameFieldLocator.TypeText(lastName);
 		}
-		
+
+		/// <summary>
+		/// Method takes the parameter and inputs it into the dependents field of the Add Employee pop-up
+		/// </summary>
+		/// <param name="dependents"></param>
 		private void TypeEmployeeDependents(string dependents)
 		{
 			AddDependentNumberLocator.TypeText(dependents);
 		}
 
+		/// <summary>
+		/// Method takes the parameter of the table
+		/// loops through all values
+		/// skips over any values equal to "skip"
+		/// inputs the table values into the correct pop-up field by utilizing a switch statement
+		/// throws an error if a table value has a different field than what is available
+		/// </summary>
+		/// <param name="table"></param>
 		public void TypeEmployeeInfo(Table table)
 		{
 			
@@ -95,28 +113,54 @@ namespace PaylocityMSTest.Pages
 			}
 		}
 
+		/// <summary>
+		/// Method clicks the submit button in the Add Employee pop-up
+		/// </summary>
 		public void ClickEmployeeSubmitButton()
 		{
 			AddEmployeeSubmitButtonLocator.Click();
 		}
 
+		/// <summary>
+		/// Method clicks the close button in the Add Employee pop-up
+		/// </summary>
 		public void ClickEmployeeCloseButton()
 		{
 			AddEmployeeCloseButtonLocator.Click();
 		}
 
+		/// <summary>
+		/// Method refreshes the page
+		/// Then looks in the webElement list that contains the table data 
+		///		for the parameters first name and last name
+		/// </summary>
+		/// <param name="firstName"></param>
+		/// <param name="lastName"></param>
+		/// <returns></returns>
 		public bool ReturnEmployeeName(string firstName, string lastName)
 		{
 
-			//driver.Navigate().Refresh();
+			driver.Navigate().Refresh();
 			return EmployeeBenefitsLocator.Any(e => e.Text.Contains(firstName + " " + lastName));
 		}
 
+		/// <summary>
+		/// Method clicks the edit button using the parameter name
+		/// </summary>
+		/// <param name="name"></param>
 		public void ClickEmployeeEditButton(string name)
 		{
 			GeneralEditEmployeeButtonLocator(name).Click();
 		}
 
+		/// <summary>
+		/// Method goes through the list of webElements containing the data table
+		/// Then returns the full row of data as a string
+		/// Based on finding the element that contains the parameters first and last name
+		/// </summary>
+		/// <param name="firstName"></param>
+		/// <param name="lastName"></param>
+		/// <returns></returns>
 		public string ReturnEmployeeInfo(string firstName, string lastName)
 		{
 			string info = string.Empty;
@@ -125,7 +169,6 @@ namespace PaylocityMSTest.Pages
 			{
 				if (e.Text.Contains(firstName) && e.Text.Contains(lastName) )
 				{
-					Console.WriteLine(e.Text + " is the benefit info in a string");
 					info = e.Text;
 					break;
 				}
@@ -133,21 +176,25 @@ namespace PaylocityMSTest.Pages
 			return info;
 		}
 
+		/// <summary>
+		/// Method takes the parameter of the table
+		/// Then manipulates it to:
+		///		put in a string
+		///		remove the extra spaces
+		///		remove the |
+		///		remove the table headers
+		/// </summary>
+		/// <param name="table"></param>
+		/// <returns></returns>
 		public string TableToString(Table table)
 		{
 			string tabled = table.ToString().Replace("|", string.Empty);
 			tabled = tabled.Substring(tabled.IndexOf('\n'));
 			tabled = Regex.Replace(tabled, @"\s+", " ");
 			tabled = tabled.Trim();
-			Debug.WriteLine(tabled + " is the new string");
 			return tabled;
 		}
 
-		public void EditEmployee(string name)
-		{
-			ClickEmployeeEditButton(name);
-
-		}
 		#endregion Methods
 	}
 }

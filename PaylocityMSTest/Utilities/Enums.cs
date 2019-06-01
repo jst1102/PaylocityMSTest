@@ -14,11 +14,5 @@ namespace PaylocityMSTest.Utilities
 			Headless
 		}
 
-		public enum EmployeeValues
-		{
-			FirstName,
-			LastName,
-			Dependents
-		}
 	}
 }

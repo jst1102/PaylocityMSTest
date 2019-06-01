@@ -44,19 +44,9 @@ namespace PaylocityMSTest.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add Employee", @"	As a test engineer
-		In order to validate the add employee function
-			of the benefits dashboard page
-	I would like to try different variations of employee information
-
-GIVEN an Employer
-AND I am on the Benefits Dashboard page
-WHEN I select Add Employee
-THEN I should be able to enter employee details
-AND First Name does not begin with “A” or “a”
-AND the employee should save
-AND I should see the employee in the table
-AND the benefit cost calculations are correct", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add Employee", "\tAs a test engineer\r\n\t\tIn order to validate the add employee function\r\n\t\t\tof the " +
+                    "benefits dashboard page\r\n\tI would like to try different variations of employee i" +
+                    "nformation", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -105,14 +95,14 @@ AND the benefit cost calculations are correct", ProgrammingLanguage.CSharp, ((st
         public virtual void AddEmployee()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Employee", null, ((string[])(null)));
-#line 16
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 17
+#line 8
 testRunner.Given("I login as a valid employer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
+#line 9
  testRunner.And("I land on the Benefits Dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 19
+#line 10
  testRunner.And("I click the Add Employee button on the Benefits Dashboard page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -127,9 +117,9 @@ testRunner.Given("I login as a valid employer", ((string)(null)), ((TechTalk.Spe
             table1.AddRow(new string[] {
                         "Dependents",
                         "2"});
-#line 20
+#line 11
 testRunner.When("I submit the following information on the Add Employee & His dependents pop up", ((string)(null)), table1, "When ");
-#line 25
+#line 16
 testRunner.Then("I should see the employee George Stacy in the table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -150,7 +140,7 @@ testRunner.Then("I should see the employee George Stacy in the table", ((string)
                         "2000",
                         "76.92",
                         "1923.08"});
-#line 26
+#line 17
  testRunner.And("the benefit cost calculations are correct for George Stacy", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
